@@ -1,6 +1,7 @@
 package main
 
 import (
+	"GoVenice/models"
 	"bytes"
 	"encoding/json"
 	"fmt"
@@ -36,7 +37,7 @@ func main() {
 	}
 
 	payload := VenicePayload{
-		Model:    "llama-3.3-70b",
+		Model:    models.DeepseekR1_Llama_70b.ID,
 		Messages: []Messages{prompt}, // Note the slice initialization
 	}
 

@@ -1,4 +1,4 @@
-package main
+package models
 
 type Model struct {
 	ID        string
@@ -16,7 +16,7 @@ type ModelSpec struct {
 }
 
 var (
-	model_llama_3_3_70b = Model{
+	Llama3_3_70b = Model{
 		ID:      "llama-3.3-70b",
 		Type:    "text",
 		Created: 1733768349,
@@ -29,7 +29,7 @@ var (
 		},
 	}
 
-	model_llama_3_2_3b = Model{
+	Llama3_2_3b = Model{
 		ID:      "llama-3.2-3b",
 		Type:    "text",
 		Created: 1727966436,
@@ -42,7 +42,7 @@ var (
 		},
 	}
 
-	model_dolphin_2_9_2_qwen2_72b = Model{
+	Dolphin2_9_2_Qwen2_72b = Model{
 		ID:      "dolphin-2.9.2-qwen2-72b",
 		Type:    "text",
 		Created: 1726869022,
@@ -55,7 +55,7 @@ var (
 		},
 	}
 
-	model_llama_3_1_405b = Model{
+	Llama3_1_405b = Model{
 		ID:      "llama-3.1-405b",
 		Type:    "text",
 		Created: 1730396371,
@@ -68,7 +68,7 @@ var (
 		},
 	}
 
-	model_qwen_2_5_coder_32b = Model{
+	Qwen2_5_Coder_32b = Model{
 		ID:      "qwen-2.5-coder-32b",
 		Type:    "text",
 		Created: 1731628653,
@@ -81,7 +81,7 @@ var (
 		},
 	}
 
-	model_deepseek_r1_llama_70b = Model{
+	DeepseekR1_Llama_70b = Model{
 		ID:      "deepseek-r1-llama-70b",
 		Type:    "text",
 		Created: 1737766445,
@@ -94,7 +94,7 @@ var (
 		},
 	}
 
-	model_deepseek_r1_671b = Model{
+	DeepseekR1_671b = Model{
 		ID:      "deepseek-r1-671b",
 		Type:    "text",
 		Created: 1738690625,
@@ -107,7 +107,7 @@ var (
 		},
 	}
 
-	model_qwen_2_5_vl = Model{
+	Qwen2_5_VL = Model{
 		ID:      "qwen-2.5-vl",
 		Type:    "text",
 		Created: 1739074852,
@@ -121,15 +121,28 @@ var (
 	}
 )
 
-func GetModels() map[string]*Model {
-	return map[string]*Model{
-		"llama-3.3-70b":           &model_llama_3_3_70b,
-		"llama-3.2-3b":            &model_llama_3_2_3b,
-		"dolphin-2.9.2-qwen2-72b": &model_dolphin_2_9_2_qwen2_72b,
-		"llama-3.1-405b":          &model_llama_3_1_405b,
-		"qwen-2.5-coder-32b":      &model_qwen_2_5_coder_32b,
-		"deepseek-r1-llama-70b":   &model_deepseek_r1_llama_70b,
-		"deepseek-r1-671b":        &model_deepseek_r1_671b,
-		"qwen-2.5-vl":             &model_qwen_2_5_vl,
-	}
+type ModelRegistry struct {
+	llama_3_3_70b           *Model
+	llama_3_2_3b            *Model
+	dolphin_2_9_2_qwen2_72b *Model
+	llama_3_1_405b          *Model
+	qwen_2_5_coder_32b      *Model
+	deepseek_r1_llama_70b   *Model
+	deepseek_r1_671b        *Model
+	qwen_2_5_vl             *Model
+}
+
+var Models = ModelRegistry{
+	llama_3_3_70b:           &Llama3_3_70b,
+	llama_3_2_3b:            &Llama3_2_3b,
+	dolphin_2_9_2_qwen2_72b: &Dolphin2_9_2_Qwen2_72b,
+	llama_3_1_405b:          &Llama3_1_405b,
+	qwen_2_5_coder_32b:      &Qwen2_5_Coder_32b,
+	deepseek_r1_llama_70b:   &DeepseekR1_Llama_70b,
+	deepseek_r1_671b:        &DeepseekR1_671b,
+	qwen_2_5_vl:             &Qwen2_5_VL,
+}
+
+func GetModels() *ModelRegistry {
+	return &Models
 }
